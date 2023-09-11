@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>first project</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="personal-data">
+    <!-- Slack Display Picture -->
+    <img src="my_pic.jpg" alt="Ephesian" data-testid="slackDisplayImage">
+
+    <!-- Slack Name -->
+    <p data-testid="slackUserName">Ephesian Saye Barrow</p>
+
+    <!-- Current Day of the Week -->
+    <p data-testid="currentDayOfTheWeek">Day of the week</p>
+
+    <!-- Current UTC Time -->
+    <p data-testid="currentUTCTime">UTC Time: <span id="utcTime"></span></p>
+
+    <!-- Track -->
+    <p data-testid="myTrack">My Track: Frontend</p>
+    </div>
+
+    <script>
+        // JavaScript code to update real-time data
+        
+        // Function to update the current UTC time
+        function updateUTCTime() {
+            const utcTimeElement = document.getElementById('utcTime');
+            const currentDate = new Date();
+            const utcMilliseconds = currentDate.getTime();
+            utcTimeElement.textContent = utcMilliseconds;
+        }
+        
+        // Function to update the current day of the week
+        function updateDayOfTheWeek() {
+            const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const dayOfWeekElement = document.querySelector('[data-testid="currentDayOfTheWeek"]');
+            const currentDayIndex = new Date().getDay();
+            const currentDay = daysOfWeek[currentDayIndex];
+            dayOfWeekElement.textContent = currentDay;
+        }
+        
+        // Initial updates
+        updateUTCTime();
+        updateDayOfTheWeek();
+        
+        // Update UTC time every second
+        setInterval(updateUTCTime, 1000);
+    </script>
+</body>
+</html>
